@@ -1,0 +1,61 @@
+<html>
+
+<head>
+
+<meta charset="utf-8">
+<title>Nova Notícia</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+</head>
+
+<body>
+<%  noticia[0].data_noticia  = noticia[0].data_noticia.toJSON().substring(0, 10); %>
+
+<% if(typeof erros != 'undefined' ) {%>
+    <div class="alert alert-danger ">
+        <div class="container">
+            <ul>
+            <% for(var i = 0; i < erros.length; i++) {  %>
+                <li class="list-unstyled"><%= erros[i].msg  %></li>
+            <% }%>
+            </ul> 
+        </div>
+    </div>
+<% }%>
+
+<h1 class="text-center mt-5">Editar Notícia</h1>
+<div class="container">
+
+    <form action="/noticias/update/<%= noticia[0].id %>" method="post">
+        <div class="form-group">
+            <label>Título</label>
+            <input type="text" class="form-control" name="titulo" value="<%= noticia[0].titulo %>" placeholder="Título da notícia">
+        </div>
+
+        <div class="form-group">
+            <label>Resumo</label>
+            <input type="text" class="form-control" name="resumo" value="<%= noticia[0].resumo %>" placeholder="Resumo da notícia">
+        </div>
+
+        <div class="form-group">
+            <label>Autor</label>
+            <input type="text" class="form-control" name="autor" value="<%= noticia[0].autor %>" placeholder="Autor da notícia">
+        </div>
+
+        <div class="form-group">
+            <label>Data da Notícia</label>
+            <input type="date" class="form-control" name="data_noticia" value="<%= noticia[0].data_noticia %>" placeholder="Data da notícia">
+        </div>
+
+        <label>Notícia</label>
+        <textarea name="noticia" class="form-control"><%= noticia[0].noticia %></textarea>
+
+        <button type="submit" class="btn btn-primary mt-4">Edit</button>
+    <form>
+    <a class="btn btn-link  mt-4" href="/noticias">Voltar</a>
+</div>
+
+</body>
+
+
+</html>

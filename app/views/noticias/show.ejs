@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+    <%    
+    noticia[0].data_noticia = noticia[0].data_noticia.toJSON().substring(0, 10);
+    split = noticia[0].data_noticia.split("-");
+    noticia[0].data_noticia = split[2] + "/" + split[1] + "/" + split[0];
+    %>
+    <div class="container">
+        <h1 class="text-center mt-3">Detalhes da Notícia</h1>
+
+        <table class="table table-striped mt-5">
+        <tr>
+            <th>ID</th>
+            <th>Título</th>
+            <th>Noticia</th>
+            <th>Data</th>
+            <th>Autor</th>
+        </tr>
+            <tr>
+                <td><%= noticia[0].id %></td>
+                <td><%= noticia[0].titulo %></td>
+                <td><%= noticia[0].noticia %></td>
+                <td><%= noticia[0].data_noticia %></td>
+                <td><%= noticia[0].autor %></td>
+            </tr>
+        </table>
+
+        <a class="btn btn-link" href="/noticias">Voltar</a>
+    </div>
+</body>
+</html>
